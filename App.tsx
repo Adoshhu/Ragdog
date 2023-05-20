@@ -1,16 +1,9 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import Navigation from './src/components/Navigation';
-import { AuthProvider } from './src/context/AuthContext';
+import React from "react";
+import { View, Text } from "react-native";
+import Navigation from "./src/components/Navigation";
 
 const App = () => {
-  return 
-    <AuthProvider>
-      <Navigation />
-    </AuthProvider>;
-
-
-
+    return <Navigation />
 };
 
 export default App;
