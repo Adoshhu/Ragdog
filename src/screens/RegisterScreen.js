@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,18 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import { AuthContext } from '../context/AuthContext';
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const val = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-      <View style={styles.Wrapper}>
+      <View style={styles.wrapper}>
+        <Text>{val}</Text>
         <TextInput
           style={styles.input}
           value={name}
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  Wrapper: {
+  wrapper: {
     width: '80%',
   },
   input: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Button,
   Text,
@@ -7,16 +7,19 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import { AuthContext } from '../context/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const val = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-      <View style={styles.Wrapper}>
+      <View style={styles.wrapper}>
+        <Text>{val}</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, { color: 'red' }]}
           value={email}
           placeholder="Enter Email"
           onChangeText={text => setEmail(text)}
@@ -26,7 +29,7 @@ const LoginScreen = ({ navigation }) => {
           style={styles.input}
           value={password}
           placeholder="Enter password"
-          onChangeText={text => setPasswrod(text)}
+          onChangeText={text => setPassword(text)}
           secureTextEntry
         />
         <Button title="Login" />
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  Wrapper: {
+  wrapper: {
     width: '80%',
   },
   input: {
@@ -56,6 +59,7 @@ const styles = StyleSheet.create({
     borderColor: '#bbb',
     borderRadius: 5,
     paddingHorizontal: 14,
+    color: 'black',
   },
   link: {
     color: 'blue',
